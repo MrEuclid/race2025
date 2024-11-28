@@ -74,7 +74,7 @@ h3 {
 font-weight: bolder; 
    font-size: 16pt; 
    
-   color:green;
+   color:blue;
 }
 
 h4 {
@@ -130,6 +130,14 @@ input {
     font-size: 1.2em;
 }
 
+p.parameter  {
+    display: inline-block;
+    color: blue;
+    font-size: 1em;
+    font-weight: bolder;
+
+}
+
 
 </style>
 
@@ -147,9 +155,16 @@ input {
     <div class = "row">
       <div class = "col-sm-12 c">
 
-    <h1>Do the BODMAS calculations</h1>
+    <h1>Calculate</h1>
 
-    <h4>There are 3 marks for each question. Click Exit when finished.</h4>
+    <h3>
+        a = <p class = "parameter" id = "a"></p>,
+        b = <p class = "parameter" id = "b"></p>,
+        c = <p class = "parameter" id = "c"></p>,
+        d = <p class = "parameter" id = "d"></p>
+    </h3>
+
+    <h4>There are 3 marks for each question.</h4>
 
     
   
@@ -242,70 +257,25 @@ input {
 }
 </script>
 
-<script>
-function getVariables()
 
-{
-
-  valid = false ; 
-  data = [] ;
-
-  var a = 10;
-  var b = 99;
-
-    data[0] = randomInteger(a,b);
-    data[1] = randomInteger(a,b);
-    data[2] = randomInteger(a,b);
-
-return data;
-}
-
-
-</script>
-
-<script type="text/javascript">
-  
-function gcd(a, b) {
-    if (b) {
-        return gcd(b, a % b);
-    } else {
-        return Math.abs(a);
-    }
-}
-
-</script>
 
 <script type="text/javascript">
     
-    function makeQuestion1()
+    function makeQuestion1(a,b,c,d)
 
 
     {
 
-        var a = 0 ;
-         while (a % 2 == 0)
-         {a = randomInteger(3,12)   ;}
+        x = (a+b) - (c+d);
 
-         var k = a*a ;
-        
-         var c = parseInt(a*a +1)/2;
-         var b = Math.sqrt(c*c - a*a);
-
-
-        console.log(k,a,b,c);
-
-     
-
-        
-
-        var expr = '$ \\sqrt{' + a + '^2 + ' + b + '^2} = '  + '$';
+        var expr = '$ ( ' + a + ' + ' + b + ')  - (' + c + ' + ' + d + ')= '  + '$';
 
         $('#equation1').html(expr);
          MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation1" ]);
 
+console.log('q1',a,b,c,d,x);
 
-
-        return c;
+        return x;
 
 
     }
@@ -438,15 +408,29 @@ console.log("q3",a,b,sum,m,z,x);
 
 answer = [];
 
-answer[1] = makeQuestion1() ;
-answer[2] = makeQuestion2() ;
-answer[3] = makeQuestion3() ;
-answer[4] = makeQuestion4() ;
+a = randomInteger(5,20);
+b = randomInteger(5,10);
+c = randomInteger(5,20);
+d = randomInteger(5,20);
+
+
+answer[1] = makeQuestion1(a,b,c,d) ;
+answer[2] = makeQuestion2(a,b,c,d) ;
+answer[3] = makeQuestion3(a,b,c,d) ;
+answer[4] = makeQuestion4(a,b,c,d) ;
 
 correct = 0 ; // number correct;
 points = 0 ;
 
-console.log(answer);
+// get values of a,b,c,d - global
+
+
+$('#a').text(a);
+$('#b').text(b);
+$('#c').text(c);
+$('#d').text(d);
+
+console.log(a,b,c,d);
   })
 
 
