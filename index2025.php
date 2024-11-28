@@ -147,6 +147,8 @@ font-weight: bolder;
 .easy {background-color: pink;color:black;}
 .stats {background-color: red;color:black;}
 .graphs {background-color: orange;color:black;}
+.smart {background-color: lightgreen;color:black;}
+
   </style>
 
   </head>
@@ -223,7 +225,7 @@ font-weight: bolder;
   <div class = "col-12 text-center">
 
  <button class = "smart" id = 'q40'>Calculations - 12</button> 
-    <button class = "calc" id = 'q1'>Factorials - 10</button> 
+    <button class = "smart" id = 'q41'>Squares - 12</button> 
        <button class = "calc"  id = 'q2'> Functions - 10</button>
          <button class = "graphs"  id = 'q3'>Cubic - 12</button> 
            <button class = "calc"  id = 'q4'>Equations - 10</button> 
@@ -923,6 +925,19 @@ var value = $('#q17').text();
   {
     var value = $('#q40').text();
     $('#play').load("bodmas.php",{question: value});
+
+  })
+  })
+</script>
+
+
+<script type="text/javascript">
+  
+    $(document).ready(function(){
+    $('#q41').on('click', function()
+  {
+    var value = $('#q41').text();
+    $('#play').load("squares.php",{question: value});
 
   })
   })

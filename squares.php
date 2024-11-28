@@ -155,13 +155,12 @@ p.parameter  {
     <div class = "row">
       <div class = "col-sm-12 c">
 
-    <h1>Calculate</h1>
+    <h1>square numbers</h1>
 
     <h3>
-        a = <p class = "parameter" id = "a"></p>,
-        b = <p class = "parameter" id = "b"></p>,
-        c = <p class = "parameter" id = "c"></p>,
-        d = <p class = "parameter" id = "d"></p>
+        <p class = "parameter" id = "a">
+          1,4,9,16,25,36,49,64,81,100,121,144,169,196,225  
+        </p>
     </h3>
 
     <h4>There are 3 marks for each question.</h4>
@@ -261,21 +260,22 @@ p.parameter  {
 
 <script type="text/javascript">
     
-    function makeQuestion1(a,b,c,d)
+    function makeQuestion1()
 
 
     {
 
-        x = (a+b) - (c+d);
+        m = randomInteger(3,15);
 
-        var expr = '$ (a + b) - (c + d ) = $';
-
+      
+        expr = '$ n^2 - 1 = ' + parseInt(m*m -1) + ', n = $';
         $('#equation1').html(expr);
          MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation1" ]);
 
-console.log('q1',a,b,c,d,x);
+      let n =  Math.sqrt(parseInt(m*m + 1));
+      console.log('q41',m,expr,n);
 
-        return x;
+        return m ;
 
 
     }
@@ -283,20 +283,23 @@ console.log('q1',a,b,c,d,x);
 
 <script type="text/javascript">
     
-    function makeQuestion2(a,b,c,d)
+    function makeQuestion2()
 
 
     {
 
-        x = (a - b) - (c - d);
-        var expr = '$ ( a - b) - (c - d) = $';
+        m = randomInteger(3,15);
+        n = randomInteger(2,15);
+
+      
+        expr = '$ a^2 + b^2  = ' + parseInt(m*m + n*n) + ', a + b = $';
         $('#equation2').html(expr);
          MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation2" ]);
 
-console.log('q2',a,b,c,d,x);
 
-   return x;
+      console.log('q42',m,n,expr);
 
+        return parseInt(m + n) ; 
 
     }
 </script>
@@ -304,20 +307,27 @@ console.log('q2',a,b,c,d,x);
 
 <script type="text/javascript">
     
-    function makeQuestion3(a,b,c,d)
+    function makeQuestion3()
 
 
     {
+        let m = 0;
+        let n = 100;
+        while (m <= n)
+        {
+            m = randomInteger(3,15);
+            n = randomInteger(2,15);
+        }
 
-        x = (a*a - d*d) - (b*b - c*c);
-        var expr = '$ ( a^2  -  d^2 )  - (b^2 -  c^2 )  = $';
+      
+        expr = '$ a^2 - b^2  = ' + parseInt(m*m - n*n) + ' , a + b = $';
         $('#equation3').html(expr);
          MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation3" ]);
 
-console.log('q3',a,b,c,d,x);
 
-   return x;
+      console.log('q43',m,n,expr);
 
+        return parseInt(m + n) ;     
 
 
     }
@@ -326,19 +336,12 @@ console.log('q3',a,b,c,d,x);
 
 <script>
 
-    function makeQuestion4(a,b,c,d)
+    function makeQuestion4()
 
 
     {
 
-        x = (a-d)**3 + (b - c)**3;
-        var expr = '$ (a - d)^3  + (b - c)^3 = $';
-        $('#equation4').html(expr);
-         MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation4" ]);
-
-console.log('q4',a,b,c,d,x);
-
-   return x;
+      
 
     }
 </script>
@@ -354,16 +357,10 @@ console.log('q4',a,b,c,d,x);
 
 answer = [];
 
-a = randomInteger(5,20);
-b = randomInteger(5,10);
-c = randomInteger(5,20);
-d = randomInteger(5,20);
-
-
-answer[1] = makeQuestion1(a,b,c,d) ;
-answer[2] = makeQuestion2(a,b,c,d) ;
-answer[3] = makeQuestion3(a,b,c,d) ;
-answer[4] = makeQuestion4(a,b,c,d) ;
+answer[1] = makeQuestion1() ;
+answer[2] = makeQuestion2() ;
+answer[3] = makeQuestion3() ;
+answer[4] = makeQuestion4() ;
 
 correct = 0 ; // number correct;
 points = 0 ;
@@ -371,12 +368,6 @@ points = 0 ;
 // get values of a,b,c,d - global
 
 
-$('#a').text(a);
-$('#b').text(b);
-$('#c').text(c);
-$('#d').text(d);
-
-console.log(a,b,c,d);
   })
 
 
