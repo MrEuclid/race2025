@@ -225,7 +225,7 @@ font-weight: bolder;
 
  <button class = "smart" id = 'q40'>Calculations - 12</button> 
     <button class = "smart" id = 'q41'>Squares - 12</button> 
-       <button class = "calc"  id = 'q2'> Primes - 12</button>
+       <button class = "calc"  id = 'q2'> a &Delta; - 12</button>
          <button class = "graphs"  id = 'q3'>Cubic - 12</button> 
            <button class = "calc"  id = 'q4'>Equations - 10</button> 
 </div></div>

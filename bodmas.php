@@ -422,7 +422,7 @@ processWin(questionID);
         else
 
         {
-            alert("keep tryings")
+            alert("keep trying")
         }
 })
 })

@@ -45,15 +45,9 @@ $question = $_POST['question'];
   
   <script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script>
 
-<title>Primes</title>
+<title>Delta</title>
 
 <style>
-
-
-
-
-
-
 
 h1 {
 font-weight: bolder; 
@@ -71,10 +65,19 @@ font-weight: bolder;
 }
 
 h3 {
-        font-weight: bolder; 
-        font-size: 1em;
-        color:blue;
+font-weight: bolder; 
+   font-size: 16pt; 
+   
+   color:blue;
 }
+
+h4 {
+font-weight: bold; 
+   font-size: 14pt; 
+   
+   color:orange;
+}
+
 
 
 p {
@@ -82,6 +85,7 @@ font-weight: bold;
 font-style: italic;
 font-size: medium;
 }
+
 
 #message {font-size: 10pt ; font-style: italic;color: black ; text-align: justify;}
 
@@ -92,19 +96,13 @@ font-size: medium;
             font-weight: bolder;
 }
 
+
 h4 {
             text-align: center;
-            font-size: 0.8em;
+            
+            font-size: 1.2em;
             font-weight: bold;
             color: black;
-}
-
-h5 {
-            text-align: center;
-            
-            font-size: 0.7em;
-            font-weight: bold;
-            color: green;
 }
 
 input {
@@ -151,15 +149,19 @@ p.parameter  {
     <div class = "row">
       <div class = "col-sm-12 c">
 
-    <h1>Prime numbers</h1>
+    <h1> $ a \Delta  b =  ab + a - b $ </h1>
 
-        <p class = "parameter" id = "a">
-          2,3,5,7,11,13,17,19,23,29,31,37,41,43,47
-        </p>
-<h5>a,b,c are prime numbers.</h5>
-    <h4>There are 4 marks for each question.</h4>
+    <h3>
+        a = <p class = "parameter" id = "a"></p>,
+        b = <p class = "parameter" id = "b"></p>,
+        c = <p class = "parameter" id = "c"></p>,
+        d = <p class = "parameter" id = "d"></p>
+    </h3>
 
+    <h4>There are 3 marks for each question.</h4>
 
+    
+  
 </div></div>
 
 
@@ -195,61 +197,23 @@ p.parameter  {
 </div></div>
 
 
+ <div class = "row">
+      <div class = "col- c">
+    <div id = "ex4">
+<label id = "equation4"></label>
+<input id = "solution4">
+<button id = "check4">Check 4</button>
+</div>
+</div></div>
+
+
+
+
+
 </div>
 
 </body>
 </html>
-
-<script type="text/javascript">
-    
-    function shuffle(array) {
-  let currentIndex = array.length;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    let randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-}
-
-</script>
-
-<script>
-
-
-  function makePrimes(max)
-{
-
-  // a list of primes up to max
-  var max_sqrt = Math.sqrt(max) ;
-  var  range = [] ;
-  var  current = 0;
-  
-  //generate array of numbers
-  for (var i = 2; i <= max; i++)
-      range.push(i);
-  
-  //filter multiples out
-  while (range[current] <= max_sqrt)
-  {
-      range = range.filter(function(n)
-      {
-          return (n == range[current] || n % range[current] != 0);
-      });
-      
-      current++;
-  }
-  
-  return range;
-}
-
-</script>
 
 <script type="text/javascript">
     
@@ -287,66 +251,50 @@ p.parameter  {
 }
 </script>
 
+<script type="text/javascript">
+    
+    function delta(a,b)
+    {
+        let d = parseInt(a*b + (a - b));
+        console.log(a,b,d);
+        return d;
+    }
+</script>
+
 
 
 <script type="text/javascript">
     
-    function makeQuestion1()
+    function makeQuestion1(a,b)
+
 
     {
-        let randomPrime =[];
-        shuffle(p);
-        console.log(p[2]);
 
-        let a = p[0];
-        let b = p[1];
-   
-        let x = a*b
-        let y = parseInt(a+b);
-
-        expr = '$ ab = ' + x  + ', a + b   = $';
+        expr = '$ a \\Delta b  =  $';
         $('#equation1').html(expr);
-         MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation1" ]);
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation1" ]);
 
-          console.log(p);
-        console.log(a,b,x,y);
-
-        return y ;
-
-
+        console.log("q1",a,b,delta(a,b));
+        return delta(a,b) ;
     }
 </script>
 
 <script type="text/javascript">
     
-    function makeQuestion2()
+    function makeQuestion2(a,b)
 
 
-    
+    {
 
-      {
-        let randomPrime =[];
-        shuffle(p);
-      
-        let a = p[0];
-        let b = p[1];
-        let c = p[2];
-        let x = a*b*c;
-        let y = parseInt(a+b+c);
-
-        expr = '$ abc = ' + x  + ', a + b + c  = $';
+       
+        expr = '$ b \\Delta a =  $';
         $('#equation2').html(expr);
-         MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation2" ]);
-        console.log(p);
-        console.log(a,b,c,x,y);
-      
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation2" ]);
 
-        return y ;
+        console.log("q2",a,b,delta(b,a));
+        return delta(b,a)
 
-
-    } 
-
-    
+    }
 </script>
 
 
@@ -356,32 +304,38 @@ p.parameter  {
 
 
     {
-        let randomPrime =[];
+        
 
-        let a = 0;
-        let b = 100;
-        while (a < b)
-        {
-            shuffle(p);
-            a = p[0];
-            b = p[1];
-        }
-       
-        let x = a*a - b*b;
-        let y = parseInt(a*b);
- 
-        expr = '$ a^2 - b^2 = ' + x  + ', ab   = $';
+        expr = '$ a \\Delta a  - b \\Delta b =  $';
         $('#equation3').html(expr);
-         MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation3" ]);
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation3" ]);
 
-        console.log(p);
-        console.log(a,b,x,y);
-    
-        return y ;
-
+        console.log("q2",a,b,delta(b,a));
+        return delta(a,a) - delta(b,b);
     }
 </script>
 
+
+<script>
+
+    function makeQuestion4(a)
+
+
+    {
+        let m = 2*a;
+        while ((m - a) /  (a-1) != parseInt((m - a) /  (a-1)))
+        {
+            m++;
+        }
+     
+        expr = '$ a \\Delta x =  ' + m + ', x =  $';
+        $('#equation4').html(expr);
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, "equation4" ]);
+
+        console.log("q4",a,m-a, a-1, (m -a) / (a - 1));
+        return (m -a) / (a - 1) ;
+    }
+</script>
 
 <script type="text/javascript">
   
@@ -392,14 +346,20 @@ p.parameter  {
 // calculate points on exit
 // $('#cancel').text("Exit");
 
-p = makePrimes(47);
-console.log(p);
+answer = [];
 
 answer = [];
 
-answer[1] = makeQuestion1() ;
-answer[2] = makeQuestion2() ;
-answer[3] = makeQuestion3() ;
+a = randomInteger(2,10);
+b = randomInteger(2,10);
+c = randomInteger(2,20);
+d = randomInteger(2,10);
+
+
+answer[1] = makeQuestion1(a,b) ;
+answer[2] = makeQuestion2(a,b,c,d) ;
+answer[3] = makeQuestion3(a,b,c,d) ;
+answer[4] = makeQuestion4(a,b,c,d) ;
 
 
 correct = 0 ; // number correct;
@@ -407,6 +367,10 @@ points = 0 ;
 
 // get values of a,b,c,d - global
 
+$('#a').text(a);
+$('#b').text(b);
+$('#c').text(c);
+$('#d').text(d);
 
   })
 
