@@ -45,9 +45,15 @@ $question = $_POST['question'];
   
   <script type="text/javascript" src="../MathJax-2.7.5/MathJax.js"></script>
 
-<title>Squares</title>
+<title>Primes</title>
 
 <style>
+
+
+
+
+
+
 
 h1 {
 font-weight: bolder; 
@@ -149,15 +155,15 @@ p.parameter  {
     <div class = "row">
       <div class = "col-sm-12 c">
 
-    <h1>Square numbers</h1>
+    <h1>Prime numbers</h1>
 
     <h3>
         <p class = "parameter" id = "a">
-          1,4,9,16,25,36,49,64,81,100,121,144,169,196,225  
+          2,3,5,7,11,13,17,19,23,29,31,37,41,43,47
         </p>
     </h3>
-
-    <h4>There are 3 marks for each question.</h4>
+<h5>a,b,c are prime numbers.</h5>
+    <h4>There are 4 marks for each question.</h4>
 
     
   
@@ -196,23 +202,41 @@ p.parameter  {
 </div></div>
 
 
- <div class = "row">
-      <div class = "col- c">
-    <div id = "ex4">
-<label id = "equation4"></label>
-<input id = "solution4">
-<button id = "check4">Check 4</button>
-</div>
-</div></div>
-
-
-
-
-
 </div>
 
 </body>
 </html>
+
+<script>
+
+
+  function makePrimes(max)
+{
+
+  // a list of primes up to max
+  var max_sqrt = Math.sqrt(max) ;
+  var  range = [] ;
+  var  current = 0;
+  
+  //generate array of numbers
+  for (var i = 2; i <= max; i++)
+      range.push(i);
+  
+  //filter multiples out
+  while (range[current] <= max_sqrt)
+  {
+      range = range.filter(function(n)
+      {
+          return (n == range[current] || n % range[current] != 0);
+      });
+      
+      current++;
+  }
+  
+  return range;
+}
+
+</script>
 
 <script type="text/javascript">
     
@@ -368,6 +392,9 @@ p.parameter  {
 // points = question.substr(-1);
 // calculate points on exit
 // $('#cancel').text("Exit");
+
+p = makePrimes(47);
+console.log(p);
 
 answer = [];
 

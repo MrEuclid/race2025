@@ -1,4 +1,3 @@
-<?php $grade = $_REQUEST['grade']; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +41,7 @@
     
     <meta name="description" content="">
     <meta name="keywords" content="">
-<title>2024 Maths Questions</title>
+<title>Smart Maths</title>
 
 <style type="text/css">
 
@@ -226,7 +225,7 @@ font-weight: bolder;
 
  <button class = "smart" id = 'q40'>Calculations - 12</button> 
     <button class = "smart" id = 'q41'>Squares - 12</button> 
-       <button class = "calc"  id = 'q2'> Functions - 10</button>
+       <button class = "calc"  id = 'q2'> Primes - 12</button>
          <button class = "graphs"  id = 'q3'>Cubic - 12</button> 
            <button class = "calc"  id = 'q4'>Equations - 10</button> 
 </div></div>
@@ -356,7 +355,7 @@ font-weight: bolder;
    //    $('#instructions').hide() ;
 timed = 60*60 ;
 
-grade = '<?php echo $grade; ?>' ;
+
 // grade = "junior";
 
 })
@@ -515,7 +514,7 @@ points = parseInt(qtn.substr(-2));
   {
 
     var value = $('#q6').text();
-    alert("Value " + value) ;
+  //  alert("Value " + value) ;
    $('#play').load("population.php",{question: value});
 
   })
@@ -1054,15 +1053,7 @@ console.log("response",response) ;
 // alert(code[0] + ' get ready to play! ' + code[2] + 'id ' + code[1]);
 console.log("Code",code);
 
-if (grade == 'senior') 
-{
-    $('.easy').hide() ; // hide the easy ones ;
-}
 
-if (grade == 'junior') 
-{
-    $('.hard').hide() ; // hide the easy ones ;
-}
 
 team =  code[0] + "*" +  code[2]; // grade + team + number of times used
 //alert(team);
@@ -1158,9 +1149,9 @@ function calculate(){
         var ans= eval(s);
     }
     catch(er){
-        alert(er.message);
+    //    alert(er.message);
     }
-    alert(ans);
+  //  alert(ans);
 }
 </script>
 
@@ -1182,7 +1173,7 @@ var expr = $('#expression').val() ;
     console.log(response);
     $('#ans').val(response) ;
     $('#expression').val('') ;
-    alert(response) ;
+   // alert(response) ;
 
         }, // success
 
